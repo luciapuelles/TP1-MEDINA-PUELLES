@@ -1,10 +1,10 @@
 #include "cVehiculo.h"
 
-cVehiculo::cVehiculo(Color color_, string patente, float precioBase, float precioDia, Tipo_Vehiculo tipo_)
+cVehiculo::cVehiculo(Color color_, string patente, float precioDia, Tipo_Vehiculo tipo_)
 {
 	color = color_;
 	Patente = patente;
-	Precio_Base = precioBase;
+	
 	Precio_Dia = precioDia;
 	tipo = tipo_;
 
@@ -27,9 +27,23 @@ cVehiculo::cVehiculo(Color color_, string patente, float precioBase, float preci
 		break;
 	}
 
+	switch (tipo)
+	{
+	case Tipo_Vehiculo::Camioneta:
+		Precio_Base = 50.0;
+		break;
+	case Tipo_Vehiculo::Moto:
+		Precio_Base = 30.0;
+		break;
+	case Tipo_Vehiculo::Carro:
+		Cant_Pasajeros = 40.0;
+		break;
+	case Tipo_Vehiculo::Monovolumen:
+		Cant_Pasajeros = 70.0;
+		break;
+	}
 
 }
-
 cVehiculo::~cVehiculo()
 {
 }
@@ -48,9 +62,9 @@ void cVehiculo::VerificacionSeguridadPendiente()
 
 bool cVehiculo::VerificarAlquiler()
 {
-	if (Estado = true)
+	if (Estado == true)
 		return true;
-	if (Estado = false)
+	if (Estado == false)
 		return false;
 }
 
