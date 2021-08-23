@@ -24,9 +24,6 @@
     <ClInclude Include="cAlquiler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cVehiculo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -44,13 +41,7 @@
     <ClCompile Include="cAlquiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="color.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="cVehiculo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tipo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
