@@ -1,9 +1,7 @@
 #pragma once
-enum class color
-{
-	Amarillo, Rojo, Negro, Plateado, Blanco, Morado
-};
-enum class tipo_Vehiculo
-{
-	Camioneta, Moto, Carro, Monovolumen
-};
+#include <string>
+#include <iostream>
+using namespace std; 
+
+enum class Color{ Amarillo, Rojo, Negro, Plateado, Blanco, Morado };
+enum class Tipo_Vehiculo{Camioneta, Moto , Carro, Monovolumen};
