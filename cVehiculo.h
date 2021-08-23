@@ -17,7 +17,7 @@ class cVehiculo
 
 
 	public:
-		cVehiculo(Color color_, string patente, float precioBase, float precioDia, Tipo_Vehiculo tipo);
+		cVehiculo(Color color_, string patente, float precioDia, Tipo_Vehiculo tipo);
 		~cVehiculo();
 
 		void VerificacionSeguridad();
