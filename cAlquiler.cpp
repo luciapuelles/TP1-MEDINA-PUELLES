@@ -36,7 +36,12 @@ void cAlquiler::ElegirAuto() {
 
 
 void cAlquiler::FinalizarAlquiler() {
-
+	if (fecha_actual->getdia() == Fecha_Devolucion->getdia() && fecha_actual->getmes() == Fecha_Devolucion->getmes() && fecha_actual->getanio() == Fecha_Devolucion->getanio())
+	{
+		cout << "ALQUILER FINALIZADO\n" << endl;
+		Vehiculo_Alquilado->setestado(false);
+		Vehiculo_Alquilado->VerificacionSeguridadPendiente();
+	}
 }
 
 int cAlquiler::DiasdeReserva()
