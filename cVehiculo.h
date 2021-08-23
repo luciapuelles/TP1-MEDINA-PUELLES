@@ -1,40 +1,43 @@
 #pragma once
-#include<string>
-#include<iostream>
-#include"color.h"
-#include"tipo.h"
-
+#include <iostream>
+#include <string>
+#include "cEnum.h"
 using namespace std;
-
 class cVehiculo
 {
-private:
-	int Cant_Pasajeros;
-	color Color;
-	bool Estado;
-	string Patente;
-	int Precio_Base;
-	int Precio_Dia;
-	tipo Tipo_vehiculo;
+	private:
+		int Cant_Pasajeros;
+		float Precio_Base;
+		float Precio_Dia;
+		bool Estado;
+		bool Verificado;
+		string Patente;
+		Color color; 
+		Tipo_Vehiculo tipo;
 
-public:
-	cVehiculo(int cant_pasajeros, color color_, bool estado, string patente, int precioBase, int PrecioDia, tipo tipoVehiculo);
-	~cVehiculo();
 
-	void VerificacionSeguridad(cVehiculo* Vehiculo);
-	void VerificacionSeguridadPendiente(cVehiculo* Vehiculo);
-	bool VerificarAlquiler(cVehiculo* vehiculo);
+	public:
+		cVehiculo(Color color_, string patente, float precioBase, float precioDia, Tipo_Vehiculo tipo);
+		~cVehiculo();
 
-	int getCantPasajeros() { return Cant_Pasajeros; };
-	color getcolor() { return Color; };
-	bool getEstado() { return Estado; };
-	void setestado(bool estado_) { Estado = estado_; }
-	string getpatente() { return Patente; };
-	int getPreciobase() { return Precio_Base; };
-	int getpreciodia() { return Precio_Dia; };
-	tipo gettipo() { return Tipo_vehiculo; };
+		void VerificacionSeguridad();
+		void VerificacionSeguridadPendiente();
+		bool VerificarAlquiler();
 
-	string to_string();
-	void imprimir();
+		void setestado(bool estado_) { Estado = estado_; }
+		int getCantPasajeros() { return Cant_Pasajeros; };
+		Color getcolor() { return color; };
+		bool getEstado() { return Estado; };
+		string getpatente() { return Patente; };
+		float getPreciobase() { return Precio_Base; };
+		float getpreciodia() { return Precio_Dia; };
+		Tipo_Vehiculo gettipo() { return tipo; };
+
+		string To_String();
+		string To_string_Vehiculo();
+		string To_String_Color();
+		void imprimir();
+
+
 };
 
