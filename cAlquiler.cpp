@@ -45,8 +45,8 @@ int cAlquiler::DiasdeReserva()
 		//inicializo 3 variables para calcular la diferencia entre las dos fechas
 		int dias1, dias2, diasreserva;
 		//calculamos los dias desde el inicio de la era hasta esa fecha en las dos ocasiones y luego se restan 
-		dias1 = ((fecha_actual->geanio() * 365) + ((fecha_actual->getmes() - 1) * 30) + fecha_actual->getdia());
-		dias2 = ((Fecha_Devolucion->geanio() * 365) + ((Fecha_Devolucion->getmes() - 1) * 30) + Fecha_Devolucion->getdia());
+		dias1 = ((fecha_actual->getanio() * 365) + ((fecha_actual->getmes() - 1) * 30) + fecha_actual->getdia());
+		dias2 = ((Fecha_Devolucion->getanio() * 365) + ((Fecha_Devolucion->getmes() - 1) * 30) + Fecha_Devolucion->getdia());
 
 		diasreserva = dias2 - dias1;
 

@@ -18,7 +18,7 @@ public:
 
 	int getdia() { return dia; };
 	int getmes() { return mes; };
-	int geanio() { return anio; };
+	int getanio() { return anio; };
 
 	void setHoy();
 	void setActualizar(int dia, int mes, int anio);
