@@ -143,11 +143,12 @@
     <ClInclude Include="cCliente.h" />
     <ClInclude Include="cFecha.h" />
     <ClInclude Include="cVehiculo.h" />
-    <ClInclude Include="tipo.h" />
+    <ClInclude Include="cEnum.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cAlquiler.cpp" />
     <ClCompile Include="cCliente.cpp" />
+    <ClCompile Include="cEnum.cpp" />
     <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="cVehiculo.cpp" />
     <ClCompile Include="Source.cpp" />

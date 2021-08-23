@@ -22,6 +22,7 @@ cAlquiler::~cAlquiler() {
 
 int cAlquiler::CalcularMontoTotal() {
 	int cantidad_dias_reserva = DiasdeReserva();
+	
 
 	
 	

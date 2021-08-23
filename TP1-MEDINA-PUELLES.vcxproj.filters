@@ -27,7 +27,7 @@
     <ClInclude Include="cVehiculo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tipo.h">
+    <ClInclude Include="cEnum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
