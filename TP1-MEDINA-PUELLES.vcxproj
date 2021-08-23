@@ -152,6 +152,7 @@
     <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="cVehiculo.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="tipo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

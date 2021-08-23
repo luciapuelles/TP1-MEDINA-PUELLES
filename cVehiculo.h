@@ -2,7 +2,7 @@
 #include<string>
 #include<iostream>
 #include"color.h"
-#include"tipo_vehiculo.h"
+#include"tipo.h"
 
 using namespace std;
 
@@ -15,10 +15,10 @@ private:
 	string Patente;
 	int Precio_Base;
 	int Precio_Dia;
-	tipo_vehiculo Tipo_vehiculo;
+	tipo Tipo_vehiculo;
 
 public:
-	cVehiculo(int cant_pasajeros, color color_, bool estado, string patente, int precioBase, int PrecioDia, tipo_vehiculo tipoVehiculo);
+	cVehiculo(int cant_pasajeros, color color_, bool estado, string patente, int precioBase, int PrecioDia, tipo tipoVehiculo);
 	~cVehiculo();
 
 	void VerificacionSeguridad(cVehiculo* Vehiculo);
@@ -32,7 +32,7 @@ public:
 	string getpatente() { return Patente; };
 	int getPreciobase() { return Precio_Base; };
 	int getpreciodia() { return Precio_Dia; };
-	tipo_vehiculo gettipo() { return Tipo_vehiculo; };
+	tipo gettipo() { return Tipo_vehiculo; };
 
 	string to_string();
 	void imprimir();
