@@ -3,7 +3,7 @@
 #include "cAlquiler.h"
 #include "tipo.h"
 #include<string>
-#include<iostream>
+#include<iostream> 
 
 using namespace std;
 class cCliente
@@ -12,7 +12,7 @@ private:
 	//Atributos del cliente
 
 	string DNI;
-	string Email;
+	string Email;''
 	cFecha* Fecha_Nacimiento;
 	string NombreyApellido;
 	int Telefono;
