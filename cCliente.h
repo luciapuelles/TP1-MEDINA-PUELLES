@@ -34,6 +34,7 @@ public:
 	Tipo_Vehiculo gettipo() { return tipo; };
 	string getNombreyapellido() { return NombreyApellido; };
 	bool getEstado() { return Estado_pagado; };
+	
 
 	//imprimimos
 	string to_string();

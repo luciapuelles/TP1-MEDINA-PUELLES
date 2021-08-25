@@ -27,6 +27,9 @@ public:
 	int getmontototal() { return MontoTotal; };
 	int getid() { return ID; };
 	string getclientename() { return Cliente->getNombreyapellido(); };
+	string getstringcliente() { return Cliente->to_string(); };
+	string to_string();
+	void imprimir();
 
 };
 

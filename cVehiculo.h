@@ -32,6 +32,7 @@ class cVehiculo
 		float getPreciobase() { return Precio_Base; };
 		float getpreciodia() { return Precio_Dia; };
 		Tipo_Vehiculo gettipo() { return tipo; };
+		bool getverificado() { return Verificado; };
 
 		string To_String();
 		string To_string_Vehiculo();

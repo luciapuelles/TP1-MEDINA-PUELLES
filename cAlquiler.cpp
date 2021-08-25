@@ -1,4 +1,6 @@
 #include "cAlquiler.h"
+#include<sstream>
+
 cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int id) {
 	Cliente = cliente = NULL;
 	Vehiculo_Alquilado = vehiculo = NULL;
@@ -17,9 +19,6 @@ cAlquiler::~cAlquiler() {
 }
 
 
-
-
-
 int cAlquiler::CalcularMontoTotal() {
 	int cantidad_dias_reserva = DiasdeReserva();
 	
@@ -30,7 +29,12 @@ int cAlquiler::CalcularMontoTotal() {
 
 
 void cAlquiler::ElegirAuto() {
-	
+	if (Cliente->gettipo() == Vehiculo_Alquilado->gettipo()) {
+		if (Cliente->gettipo() == Tipo_Vehiculo::Camioneta && Vehiculo_Alquilado->getEstado() == false && Vehiculo_Alquilado->getverificado() == true)
+		{
+			Vehiculo_Alquilado->setestado(true);
+		}
+	}
 }
 
 
@@ -56,4 +60,25 @@ int cAlquiler::DiasdeReserva()
 
 		return diasreserva;
 	
+}
+
+string cAlquiler::to_string()
+{
+	stringstream ss;
+
+	ss << Cliente->to_string() << endl;
+	ss << "Vehiculo: " << Vehiculo_Alquilado << endl;
+	ss << "Inicio de incio de reserva del vehiculo: " << fecha_actual->to_stringFecha() << endl;
+	ss << "Final de incio de reserva del vehiculo: " << Fecha_Devolucion->to_stringFecha() << endl;
+	ss << "ID del Alquiler: " << ID << endl;
+	ss << "Monto total: " << MontoTotal << endl;
+
+	return ss.str();
+	
+}
+
+void cAlquiler::imprimir()
+{
+	string imprimir2 = to_string();
+	cout << imprimir2;
 }
