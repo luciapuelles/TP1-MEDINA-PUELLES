@@ -1,28 +1,28 @@
 #pragma once
 #include "cFecha.h"
 #include "cAlquiler.h"
-#include "tipo.h"
+#include"cEnum.h"
 #include<string>
 #include<iostream> 
 
 using namespace std;
 class cCliente
-{
+{ 
 private:
 	//Atributos del cliente
 
 	string DNI;
-	string Email;''
+	string Email;
 	cFecha* Fecha_Nacimiento;
 	string NombreyApellido;
 	int Telefono;
-	tipo Tipo_Vehiculo;
+	Tipo_Vehiculo tipo;
 	bool Estado_pagado; // true : pagado , false: no esta pagado
 
 public:
 
 	//Inicializamos los atributos
-	cCliente(string dni, string email, string NombreyApe, int telf, tipo tipo_);
+	cCliente(string dni, string email, string NombreyApe, int telf, Tipo_Vehiculo tipo_);
 	//Verificamos que la fecha no sea NULL
 	~cCliente();
 
@@ -31,7 +31,7 @@ public:
 
 	//getters de los atributos
 	string getdni() { return DNI; };
-	tipo gettipo() { return Tipo_Vehiculo; };
+	Tipo_Vehiculo gettipo() { return tipo; };
 	string getNombreyapellido() { return NombreyApellido; };
 	bool getEstado() { return Estado_pagado; };
 

@@ -30,7 +30,7 @@ int cAlquiler::CalcularMontoTotal() {
 
 
 void cAlquiler::ElegirAuto() {
-
+	
 }
 
 

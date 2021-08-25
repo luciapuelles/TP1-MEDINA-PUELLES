@@ -1,13 +1,13 @@
 #include "cCliente.h"
 #include<sstream>
 
-cCliente::cCliente(string dni, string email, string NombreyApe, int telf, tipo tipo_) {
+cCliente::cCliente(string dni, string email, string NombreyApe, int telf, Tipo_Vehiculo tipo_) {
 	DNI = dni;
 	Email = email;
 	Fecha_Nacimiento = NULL;
 	NombreyApellido = NombreyApe;
 	Telefono = telf;
-	Tipo_Vehiculo = tipo_;
+	tipo = tipo_;
 	Estado_pagado = false;
 }
 
