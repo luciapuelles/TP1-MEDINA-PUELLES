@@ -23,7 +23,7 @@ public:
 	void FinalizarAlquiler();
 	int DiasdeReserva();
 
-	int setmontototal(int num_) { MontoTotal = num_; }
+	
 	int getmontototal() { return MontoTotal; };
 	int getid() { return ID; };
 	string getclientename() { return Cliente->getNombreyapellido(); };

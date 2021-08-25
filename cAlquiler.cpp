@@ -23,10 +23,9 @@ cAlquiler::~cAlquiler() {
 int cAlquiler::CalcularMontoTotal() {
 	int cantidad_dias_reserva = DiasdeReserva();
 	
-
+	MontoTotal = (Vehiculo_Alquilado->getPreciobase() + Vehiculo_Alquilado->getpreciodia()) * cantidad_dias_reserva;
 	
-	
-
+	return MontoTotal;
 }
 
 
