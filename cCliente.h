@@ -27,7 +27,7 @@ public:
 	~cCliente();
 
 	//Verifica que el Alquiler sea del cliente y si es cambia el estado a "pagado"
-	void Pagar(cAlquiler* alquiler);
+	void Pagar( cAlquiler* alquiler);
 
 	//getters de los atributos
 	string getdni() { return DNI; };
