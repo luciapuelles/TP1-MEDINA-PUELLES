@@ -1,10 +1,10 @@
 #include "cAlquiler.h"
 #include<sstream>
 
-cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int id) {
-	Cliente = cliente = NULL;
-	Vehiculo_Alquilado = vehiculo = NULL;
-	Fecha_Devolucion =  NULL;
+cAlquiler::cAlquiler(cCliente* cliente_, cVehiculo* vehiculo,cFecha* fecha, int id) {
+	this->cliente = cliente_;
+	Vehiculo_Alquilado = vehiculo;
+	Fecha_Devolucion = fecha;
 	fecha_actual->setHoy();
 	ID = id;
 	MontoTotal = 0;
@@ -13,13 +13,13 @@ cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int id) {
 
 
 cAlquiler::~cAlquiler() {
-	if (Cliente != NULL) delete Cliente;
+	if (cliente != NULL) delete cliente;
 	if (Vehiculo_Alquilado != NULL) delete Vehiculo_Alquilado;
 	if (Fecha_Devolucion != NULL) delete Fecha_Devolucion;
 }
 
 
-int cAlquiler::CalcularMontoTotal() {
+float cAlquiler::CalcularMontoTotal() {
 	int cantidad_dias_reserva = DiasdeReserva();
 	
 	MontoTotal = (Vehiculo_Alquilado->getPreciobase() + Vehiculo_Alquilado->getpreciodia()) * cantidad_dias_reserva;
@@ -29,8 +29,8 @@ int cAlquiler::CalcularMontoTotal() {
 
 
 void cAlquiler::ElegirAuto() {
-	if (Cliente->gettipo() == Vehiculo_Alquilado->gettipo()) {
-		if (Cliente->gettipo() == Tipo_Vehiculo::Camioneta && Vehiculo_Alquilado->getEstado() == false && Vehiculo_Alquilado->getverificado() == true)
+	if (cliente->gettipo() == Vehiculo_Alquilado->gettipo()) {
+		if (cliente->gettipo() == Tipo_Vehiculo::Camioneta && Vehiculo_Alquilado->getEstado() == false && Vehiculo_Alquilado->getverificado() == true)
 		{
 			Vehiculo_Alquilado->setestado(true);
 		}
@@ -62,11 +62,26 @@ int cAlquiler::DiasdeReserva()
 	
 }
 
+string cAlquiler::getclientename()
+{
+	return cliente->getNombreyapellido(); 
+}
+string cAlquiler::getstringcliente()
+{
+	return  cliente->to_string();
+
+}
+
+bool cAlquiler::getestadocliente()
+{
+	return cliente->getEstado();
+}
+
 string cAlquiler::to_string()
 {
 	stringstream ss;
 
-	ss << Cliente->to_string() << endl;
+	ss << cliente->to_string() << endl;
 	ss << "Vehiculo: " << Vehiculo_Alquilado << endl;
 	ss << "Inicio de incio de reserva del vehiculo: " << fecha_actual->to_stringFecha() << endl;
 	ss << "Final de incio de reserva del vehiculo: " << Fecha_Devolucion->to_stringFecha() << endl;

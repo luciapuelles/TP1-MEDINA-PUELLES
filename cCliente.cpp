@@ -1,5 +1,4 @@
 #include "cCliente.h"
-#include "cAlquiler.h"
 #include<sstream>
 
 cCliente::cCliente(string dni, string email, string NombreyApe, int telf, Tipo_Vehiculo tipo_) {
@@ -20,12 +19,13 @@ void cCliente::Pagar(cAlquiler* alquiler) {
 	if (alquiler != NULL) {
 		if (alquiler->getclientename() == getNombreyapellido())
 		{
-			getEstado() == true;
+			alquiler->getestadocliente() == true;
+			
 			cout << "PAGADO\n" << endl;
 		}
 		else
 		{
-			getEstado() == false;
+			alquiler->getestadocliente() == false;
 			cout << "NO ESTA PAGO\n" << endl;
 		}
 	}

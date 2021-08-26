@@ -4,9 +4,8 @@
 #include"cEnum.h"
 #include<string>
 #include<iostream> 
-
-
 using namespace std;
+
 class cCliente
 { 
 private:

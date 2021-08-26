@@ -2,34 +2,34 @@
 #include "cCliente.h"
 #include "cVehiculo.h"
 #include "cFecha.h"
-class cAlquiler;
-
 
 class cAlquiler
 {
 private:
-	cCliente* Cliente;
+
+	cCliente* cliente;
 	cVehiculo* Vehiculo_Alquilado;
 	cFecha* fecha_actual;
 	cFecha* Fecha_Devolucion;
 	int ID;
-	int MontoTotal;
+	float MontoTotal;
 
 public:
-	cAlquiler(cCliente* cliente, cVehiculo* vehiculo, int id);
+	cAlquiler(cCliente* cliente_, cVehiculo* vehiculo,cFecha* fecha, int id);
 	~cAlquiler();
 
 
-	int CalcularMontoTotal();
+	float CalcularMontoTotal();
 	void ElegirAuto();
 	void FinalizarAlquiler();
 	int DiasdeReserva();
 
 	
-	int getmontototal() { return MontoTotal; };
+	float getmontototal() { return MontoTotal; };
 	int getid() { return ID; };
-	string getclientename() { return Cliente->getNombreyapellido(); };
-	string getstringcliente() { return Cliente->to_string(); };
+	string getclientename();
+	string getstringcliente();
+	bool getestadocliente();
 	string to_string();
 	void imprimir();
 
