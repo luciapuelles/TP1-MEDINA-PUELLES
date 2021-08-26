@@ -1,9 +1,10 @@
 #pragma once
 #include "cFecha.h"
-#include "cAlquiler.h"
 #include"cEnum.h"
 #include<string>
 #include<iostream> 
+class cAlquiler;
+
 using namespace std;
 
 class cCliente
