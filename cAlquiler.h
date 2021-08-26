@@ -2,6 +2,8 @@
 #include "cCliente.h"
 #include "cVehiculo.h"
 #include "cFecha.h"
+class cAlquiler;
+
 
 class cAlquiler
 {

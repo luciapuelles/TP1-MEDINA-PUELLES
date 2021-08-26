@@ -1,5 +1,5 @@
 #include "cCliente.h"
-
+#include "cAlquiler.h"
 #include<sstream>
 
 cCliente::cCliente(string dni, string email, string NombreyApe, int telf, Tipo_Vehiculo tipo_) {
