@@ -36,10 +36,10 @@ cVehiculo::cVehiculo(Color color_, string patente, float precioDia, Tipo_Vehicul
 		Precio_Base = 30.0;
 		break;
 	case Tipo_Vehiculo::Carro:
-		Cant_Pasajeros = 40.0;
+		Precio_Base = 40.0;
 		break;
 	case Tipo_Vehiculo::Monovolumen:
-		Cant_Pasajeros = 70.0;
+		Precio_Base = 70.0;
 		break;
 	}
 
