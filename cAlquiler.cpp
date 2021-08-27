@@ -1,45 +1,50 @@
 #include "cAlquiler.h"
 #include<sstream>
+#define _CRT_SECURE_NO_WARNINGS
 
-cAlquiler::cAlquiler(cCliente* cliente_, cVehiculo* vehiculo,cFecha* fecha, int id) {
-	this->cliente = cliente_;
+cAlquiler::cAlquiler(cCliente* cliente, cVehiculo* vehiculo, tm* fecha_devolucion, int id)
+{
+	Cliente = cliente;
 	Vehiculo_Alquilado = vehiculo;
-	Fecha_Devolucion = fecha;
-	fecha_actual->setHoy();
 	ID = id;
 	MontoTotal = 0;
+	this->fecha_devolucion = fecha_devolucion;
+
+	//fecha actual
+	time_t rawtime;
+	struct tm* timeinfo;
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+	fecha_actual = timeinfo;
+
 }
 
 
 
 cAlquiler::~cAlquiler() {
-	if (cliente != NULL) delete cliente;
-	if (Vehiculo_Alquilado != NULL) delete Vehiculo_Alquilado;
-	if (Fecha_Devolucion != NULL) delete Fecha_Devolucion;
+
 }
 
 
-float cAlquiler::CalcularMontoTotal() {
+void cAlquiler::CalcularMontoTotal() {
 	int cantidad_dias_reserva = DiasdeReserva();
-	
-	MontoTotal = (Vehiculo_Alquilado->getPreciobase() + Vehiculo_Alquilado->getpreciodia()) * cantidad_dias_reserva;
-	
-	return MontoTotal;
+	MontoTotal = Vehiculo_Alquilado->getPreciobase() + (Vehiculo_Alquilado->getpreciodia() * cantidad_dias_reserva);
+	cout << "El monto total a pagar es: " << MontoTotal << endl;
 }
 
 
 void cAlquiler::ElegirAuto() {
-	if (cliente->gettipo() == Vehiculo_Alquilado->gettipo()) {
-		if (cliente->gettipo() == Tipo_Vehiculo::Camioneta && Vehiculo_Alquilado->getEstado() == false && Vehiculo_Alquilado->getverificado() == true)
-		{
-			Vehiculo_Alquilado->setestado(true);
-		}
-	}
+	if (Cliente->gettipo() == Vehiculo_Alquilado->gettipo()&& Vehiculo_Alquilado->getEstado() == false && Vehiculo_Alquilado->getverificado() == true)
+		Vehiculo_Alquilado->setestado(true);
+
 }
 
 
 void cAlquiler::FinalizarAlquiler() {
-	if (fecha_actual->getdia() == Fecha_Devolucion->getdia() && fecha_actual->getmes() == Fecha_Devolucion->getmes() && fecha_actual->getanio() == Fecha_Devolucion->getanio())
+	fecha_actual->tm_mon = fecha_devolucion->tm_mon;
+	fecha_actual->tm_mday = fecha_devolucion->tm_mday;
+	fecha_actual->tm_year = fecha_devolucion->tm_year;//lo igualo para probar que funcione
+	if (fecha_actual->tm_mday == fecha_devolucion->tm_mday && fecha_actual->tm_mon == fecha_devolucion->tm_mon && fecha_actual->tm_year == fecha_devolucion->tm_year)
 	{
 		cout << "ALQUILER FINALIZADO\n" << endl;
 		Vehiculo_Alquilado->setestado(false);
@@ -49,42 +54,38 @@ void cAlquiler::FinalizarAlquiler() {
 
 int cAlquiler::DiasdeReserva()
 {
-	
-		//inicializo 3 variables para calcular la diferencia entre las dos fechas
-		int dias1, dias2, diasreserva;
+		int diasreserva;
+		int dia = fecha_actual->tm_mday;
+		int mes = fecha_actual->tm_mon+1;
+		int anio = fecha_actual->tm_year+1900;
+
 		//calculamos los dias desde el inicio de la era hasta esa fecha en las dos ocasiones y luego se restan 
-		dias1 = ((fecha_actual->getanio() * 365) + ((fecha_actual->getmes() - 1) * 30) + fecha_actual->getdia());
-		dias2 = ((Fecha_Devolucion->getanio() * 365) + ((Fecha_Devolucion->getmes() - 1) * 30) + Fecha_Devolucion->getdia());
-
+		long int dias1 = (anio * 365) + (mes * 30) + dia;
+		long int dias2 = ((fecha_devolucion->tm_year) * 365) + ((fecha_devolucion->tm_mon)*30) + fecha_devolucion->tm_mday;
 		diasreserva = dias2 - dias1;
-
+		cout << "El cliente alquila el auto por " << diasreserva << " dias" << endl;
 		return diasreserva;
 	
 }
 
-string cAlquiler::getclientename()
+void cAlquiler::Ejecutar_Alquiler()
 {
-	return cliente->getNombreyapellido(); 
-}
-string cAlquiler::getstringcliente()
-{
-	return  cliente->to_string();
-
+	ElegirAuto();
+	CalcularMontoTotal();
+	Cliente->Pagar(this);
+	FinalizarAlquiler();
 }
 
-bool cAlquiler::getestadocliente()
-{
-	return cliente->getEstado();
-}
 
-string cAlquiler::to_string()
+
+string cAlquiler::To_string()
 {
 	stringstream ss;
 
-	ss << cliente->to_string() << endl;
+	ss << Cliente->to_string() << endl;
 	ss << "Vehiculo: " << Vehiculo_Alquilado << endl;
-	ss << "Inicio de incio de reserva del vehiculo: " << fecha_actual->to_stringFecha() << endl;
-	ss << "Final de incio de reserva del vehiculo: " << Fecha_Devolucion->to_stringFecha() << endl;
+	//ss << "Inicio de reserva del vehiculo: " << to_string(fecha_actual.tm_mday) + "/" + to_string(fecha_actual.tm_mon) + "/" + to_string(fecha_actual.tm_year) << endl;
+	//ss << "Final de incio de reserva del vehiculo: " << to_string(fecha_devolucion.tm_mday) + "/" + to_string(fecha_devolucion.tm_mon) + "/" + to_string(fecha_devolucion.tm_year) << endl;
 	ss << "ID del Alquiler: " << ID << endl;
 	ss << "Monto total: " << MontoTotal << endl;
 
@@ -94,6 +95,6 @@ string cAlquiler::to_string()
 
 void cAlquiler::imprimir()
 {
-	string imprimir2 = to_string();
+	string imprimir2 = To_string();
 	cout << imprimir2;
 }
