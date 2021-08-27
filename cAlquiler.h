@@ -1,37 +1,37 @@
 #pragma once
-#include "cCliente.h"
 #include "cVehiculo.h"
 #include "cFecha.h"
+#include "cCliente.h"
+#include <ctime>
 
 class cAlquiler
 {
 private:
-
-	cCliente* cliente;
+	cCliente* Cliente;
 	cVehiculo* Vehiculo_Alquilado;
-	cFecha* fecha_actual;
-	cFecha* Fecha_Devolucion;
+	tm* fecha_actual;
+	tm* fecha_devolucion;
 	int ID;
-	float MontoTotal;
+	int MontoTotal;
 
 public:
-	cAlquiler(cCliente* cliente_, cVehiculo* vehiculo,cFecha* fecha, int id);
+	cAlquiler(cCliente* cliente, cVehiculo* vehiculo, tm* fecha_devolucion, int id);
 	~cAlquiler();
 
 
-	float CalcularMontoTotal();
+	void CalcularMontoTotal();
 	void ElegirAuto();
 	void FinalizarAlquiler();
 	int DiasdeReserva();
-
 	
-	float getmontototal() { return MontoTotal; };
+	int getmontototal() { return MontoTotal; };
 	int getid() { return ID; };
-	string getclientename();
-	string getstringcliente();
-	bool getestadocliente();
-	string to_string();
+	string getclientename() { return Cliente->getNombreyapellido(); };
+	string getstringcliente() { return Cliente->to_string(); };
+	bool getestadocliente() { return Cliente->getEstado(); };
+	string To_string();
 	void imprimir();
 
 };
+
 
