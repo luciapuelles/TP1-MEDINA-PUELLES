@@ -1,11 +1,10 @@
 #include "cCliente.h"
-#include"cAlquiler.h"
+#include "cAlquiler.h"
 #include<sstream>
 
 cCliente::cCliente(string dni, string email, string NombreyApe, int telf, Tipo_Vehiculo tipo_) {
 	DNI = dni;
 	Email = email;
-	Fecha_Nacimiento = NULL;
 	NombreyApellido = NombreyApe;
 	Telefono = telf;
 	tipo = tipo_;
@@ -13,22 +12,22 @@ cCliente::cCliente(string dni, string email, string NombreyApe, int telf, Tipo_V
 }
 
 cCliente::~cCliente() {
-	if (Fecha_Nacimiento != NULL) delete Fecha_Nacimiento;
+
 }
 
-void cCliente::Pagar(cAlquiler* alquiler) {
-	if (alquiler != NULL) {
-		if (alquiler->getclientename() == getNombreyapellido())
-		{
-			alquiler->getestadocliente() == true;
-			
-			cout << "PAGADO\n" << endl;
-		}
-		else
-		{
-			alquiler->getestadocliente() == false;
-			cout << "NO ESTA PAGO\n" << endl;
-		}
+void cCliente::Pagar(cAlquiler* alquiler) 
+{
+
+	if (alquiler->getclientename() == NombreyApellido)
+	{
+		alquiler->getestadocliente() == true;
+		cout << "PAGADO\n" << endl;
+	}
+	else
+	{
+		cout << "Este no es el alquiler que le coresponde al cliente" << endl;
+		cout << "NO ESTA PAGO\n" << endl;
+		Estado_pagado = false;
 	}
 }
 
@@ -40,7 +39,6 @@ string cCliente::to_string()
 
 	ss << "DNI: " << DNI << endl;
 	ss << "Email: " << Email << endl;
-	ss << "Fecha de Nacimiento:  " << Fecha_Nacimiento->to_stringFecha() << endl;
 	ss << "Nombre y Apellido: " << NombreyApellido << endl;
 	ss << "Telefono: " << Telefono << endl;
 	//ss << "Tipo de vehiculo: " << Tipo_Vehiculo << endl;
