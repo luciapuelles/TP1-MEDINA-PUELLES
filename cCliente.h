@@ -5,8 +5,8 @@
 #include<iostream> 
 class cAlquiler;
 
-using namespace std;
 
+using namespace std;
 class cCliente
 { 
 private:
@@ -14,7 +14,6 @@ private:
 
 	string DNI;
 	string Email;
-	cFecha* Fecha_Nacimiento;
 	string NombreyApellido;
 	int Telefono;
 	Tipo_Vehiculo tipo;
@@ -24,11 +23,10 @@ public:
 
 	//Inicializamos los atributos
 	cCliente(string dni, string email, string NombreyApe, int telf, Tipo_Vehiculo tipo_);
-	//Verificamos que la fecha no sea NULL
 	~cCliente();
 
 	//Verifica que el Alquiler sea del cliente y si es cambia el estado a "pagado"
-	void Pagar( cAlquiler* alquiler);
+	void Pagar(cAlquiler* alquiler);
 
 	//getters de los atributos
 	string getdni() { return DNI; };
@@ -41,4 +39,5 @@ public:
 	string to_string();
 	void imprimir();
 };
+
 
